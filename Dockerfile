@@ -6,13 +6,12 @@ ENV GRADLE_HOME=/opt/gradle/gradle-5.0
 ENV PATH=${GRADLE_HOME}/bin:${PATH}
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 RUN useradd -ms /bin/bash app
-USER app
 
 # Add source files to docker image
 ADD .	/home/websocket
 
 # Update and install dependencies
-RUN sudo chmod 777 -R /home/websocket && apt-get -y update \
+RUN chmod 777 -R /home/websocket && apt-get -y update \
     && apt-get -y upgrade \
     && apt-get -y install openjdk-8-jdk wget unzip
 
@@ -25,6 +24,6 @@ RUN cd /home/websocket \
     && gradle build
     
 EXPOSE 8080
-
+USER app
 WORKDIR /home/websocket
 CMD ["gradle", "run", "-privileged"]
