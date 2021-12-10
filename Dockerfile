@@ -1,11 +1,12 @@
 FROM ubuntu
-USER app
 # Set timezone and environment variables
 ENV TZ=America/New_York
 ENV PATH=$PATH:/usr/bin/node
 ENV GRADLE_HOME=/opt/gradle/gradle-5.0
 ENV PATH=${GRADLE_HOME}/bin:${PATH}
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+RUN useradd -ms /bin/bash app
+USER app
 
 # Add source files to docker image
 ADD .	/home/websocket
