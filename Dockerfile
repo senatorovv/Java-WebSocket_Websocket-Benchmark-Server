@@ -10,7 +10,7 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 ADD .	/home/websocket
 
 # Update and install dependencies
-RUN chmod 777 -R /home/websocket && chmod 777 -R /opt/gradle/gradle-5.0 && apt-get -y update \
+RUN chmod 777 -R /home/websocket && apt-get -y update \
     && apt-get -y upgrade \
     && apt-get -y install openjdk-8-jdk wget unzip
 
