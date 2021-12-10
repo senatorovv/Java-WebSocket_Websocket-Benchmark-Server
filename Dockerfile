@@ -26,4 +26,4 @@ RUN cd /home/websocket \
 EXPOSE 8080
 
 WORKDIR /home/websocket
-CMD ["gradle", "run"]
+CMD ["gradle", "run", "-privileged"]
