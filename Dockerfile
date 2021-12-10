@@ -1,5 +1,5 @@
 FROM ubuntu
-
+USER root
 # Set timezone and environment variables
 ENV TZ=America/New_York
 ENV PATH=$PATH:/usr/bin/node
