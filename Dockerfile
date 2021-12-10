@@ -1,5 +1,4 @@
 FROM ubuntu
-USER root
 # Set timezone and environment variables
 ENV TZ=America/New_York
 ENV PATH=$PATH:/usr/bin/node
@@ -11,7 +10,7 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 ADD .	/home/websocket
 
 # Update and install dependencies
-RUN apt-get -y update \
+RUN chmod 777 -R /home/websocket &&apt-get -y update \
     && apt-get -y upgrade \
     && apt-get -y install openjdk-8-jdk wget unzip
 
