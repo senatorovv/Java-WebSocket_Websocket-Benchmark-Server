@@ -12,7 +12,7 @@ USER app
 ADD .	/home/websocket
 
 # Update and install dependencies
-RUN chmod 777 -R /home/websocket && apt-get -y update \
+RUN sudo chmod 777 -R /home/websocket && apt-get -y update \
     && apt-get -y upgrade \
     && apt-get -y install openjdk-8-jdk wget unzip
 
